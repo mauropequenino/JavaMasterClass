@@ -60,10 +60,21 @@ public class Disciplina {
         return nameTeacher;
     }
 
-    public void getStudents() {
-        System.out.println("Alunos: ");
-        for (int i=0;i<this.students.size();i++){
-            System.out.println((i+1) + " -> " + students.get(i).getNome());
-        }
+    public List<Aluno> getStudents() {
+        return students;
+    }
+
+    @Override
+    public String toString() {
+        String s = "Disciplina {" +
+                "\n\tDisciplina= " + subjectName +
+                "\n\tDocente= " + nameTeacher.getNome() +
+                "\n\tNumero de estudantes= [";
+                for (int i=0;i<this.students.size();i++) {
+                    s += "\n\t\tID: " + (i+1) + " -> " + students.get(i).getNome();
+                }
+                s += "\n\t]";
+                s += "\n}";
+        return s;
     }
 }

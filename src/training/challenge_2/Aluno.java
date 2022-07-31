@@ -21,6 +21,8 @@ public class Aluno extends Cidadao{
 
     @Override
     public String toString() {
-        return "Aluno{}";
+        return "Aluno{" + "\n" +
+                "id=" + id + "\n" +
+                "nome= " + getNome() + "\n";
     }
 }

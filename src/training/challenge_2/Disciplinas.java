@@ -10,14 +10,15 @@ public class Disciplinas {
         this.subjects = new ArrayList<Disciplina>();
     }
 
-    public boolean isStudentEnrolled(Disciplina subject, String studentName) {
-        if ((findSubject(subject) >= 0) && (subject.findStudent(studentName) >= 0)){
+    public boolean isStudentEnrolled(String subject, String studentName) {
+        int position = findSubject(subject);
+        if ((position >= 0) && (subjects.get(position).findStudent(studentName) >= 0)){
           return true;
         }
         return false;
     }
 
-    public boolean addStudent(Disciplina subject, Aluno aluno){
+    public boolean addStudent(String subject, Aluno aluno){
         int position = findSubject(subject);
         if(position >=0) {
             subjects.get(position).addNewStudent(aluno);
@@ -26,7 +27,7 @@ public class Disciplinas {
         return false;
     }
 
-    public boolean removeStudent(Disciplina subject, Aluno aluno) {
+    public boolean removeStudent(String subject, Aluno aluno) {
         int position = findSubject(subject);
         if(position >= 0) {
             subjects.get(position).removeStudent(aluno);
@@ -38,13 +39,13 @@ public class Disciplinas {
     public boolean openSubject(String subject, Docente docente) {
         int position = findSubject(subject);
         if(position >= 0) {
-            subjects.add(new Disciplina(subject, docente));
-            return true;
+            return false;
         }
-        return false;
+        subjects.add(new Disciplina(subject, docente));
+        return true;
     }
 
-    public boolean closeSubject(Disciplina subject) {
+    public boolean closeSubject(String subject) {
         int position = findSubject(subject);
         if (position >= 0) {
             subjects.remove(subject);
@@ -55,19 +56,23 @@ public class Disciplinas {
 
     public void getSubjectStudents(String subject) {
         int position = findSubject(subject);
-        System.out.println("Alunos: ");
-        for(int i=0;i<subjects.size();i++) {
-            subjects.get(position).getStudents();
+        for(Aluno a : subjects.get(position).getStudents()){
+            System.out.println(a.getNome());
         }
     }
 
-    public void getSubjectTeacher(String subject) {
+    public String getSubjectTeacher(String subject) {
         int position = findSubject(subject);
-        System.out.println("Docente: " + subjects.get(position).getNameTeacher());
+        if (position >= 0) {
+            return subjects.get(position).getNameTeacher().getNome();
+        }
+        return null;
     }
-    private int findSubject(String subject) {
-        for (int i=0;i<subjects.size();i++){
-            Disciplina s = subjects.get(i);
+
+    public int findSubject(String subject) {
+        for (int i=0;i<this.subjects.size();i++){
+            Disciplina s = this.subjects.get(i);
+//            System.out.println("aaaaaa" + s);
             if(s.getSubjectName().equalsIgnoreCase(subject)){
                 return i;
             }
@@ -85,13 +90,15 @@ public class Disciplinas {
                s += "\n\tDiscuplinas: [";
                for(int i=0;i<subjects.size();i++) {
                    s += "\n\t\tNome: " + subjects.get(i).getSubjectName();
-                   s += "\n\t\tDocente: " + subjects.get(i).getNameTeacher();
+                   s += "\n\t\tDocente: " + subjects.get(i).getNameTeacher().getNome();
                    s += "\n\t\tAlunos: [";
-                   subjects.get(i).getStudents();
+                   for(Aluno a : subjects.get(i).getStudents()){
+                       s += "\n\t\t\t" + a.getId() + " -> " + a.getNome();
+                   }
                    s += "\n\t\t]";
                }
-               s += "\n\t]";
-               s += "}";
+
+               s += "\n}";
         return s;
     }
 

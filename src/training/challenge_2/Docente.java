@@ -19,4 +19,11 @@ public class Docente extends Cidadao{
     public String getNome() {
         return super.getNome() + " " + super.getApelido();
     }
+
+    @Override
+    public String toString() {
+        return "Docente{" + "\n" +
+                "id=" + id + "\n" +
+                "nome= " + getNome() + "\n";
+    }
 }
