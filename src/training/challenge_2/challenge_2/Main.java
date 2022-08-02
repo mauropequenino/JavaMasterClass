@@ -1,4 +1,4 @@
-package training.challenge_2;
+package training.challenge_2.challenge_2;
 
 import java.util.Scanner;
 
