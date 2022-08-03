@@ -37,6 +37,9 @@ public class Main {
 				getAllStudentsFromAllSubjects();
 				break;
 			case 6:
+				isStudentEnrroledinSubject();
+				break;
+			case 7:
 				printActions();
 				break;
 			}	
@@ -109,7 +112,19 @@ public class Main {
 	public static void getAllStudentsFromAllSubjects() {
 		System.out.print(subjects.toString());
 	}
-	
+
+	public static void isStudentEnrroledinSubject() {
+		System.out.print("Subject name: ");
+		String subjectName = sc.nextLine();
+		System.out.print("Student full name: ");
+		String studentName = sc.nextLine();
+
+		if(subjects.isStudentEnrolledIntSubject(subjectName, studentName)) {
+			System.out.println("\n" + studentName + " is enrolled in " + subjectName);
+		} else {
+			System.out.println("Subjects doesnt exist or student isnt enrroled");
+		}
+	}
 	
 	private static void printActions(){
         System.out.println("\nAvailable action\nPress");
@@ -119,6 +134,7 @@ public class Main {
                 "\n\t3 - Add student to an existing subject" +
                 "\n\t4 - Remove student to an existing subject" +
                 "\n\t5 - Show all students from a subject" +
-                "\n\t6 - to print a list of available actions");
+				"\n\t6 - Check if a student is enrolled in an existing subject" +
+                "\n\t7 - to print a list of available actions");
     }
 }

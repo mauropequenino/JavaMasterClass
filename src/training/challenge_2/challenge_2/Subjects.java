@@ -10,9 +10,9 @@ public class Subjects {
         subjectList = new ArrayList<Subject>();
     }
 
-    public boolean isStudentEnrolledIntSubject(String subjectName, String studetName) {
-        int position = findSubject(studetName);
-        if((position >= 0) && (subjectList.get(position).findStudentByName(subjectName)>= 0))
+    public boolean isStudentEnrolledIntSubject(String subjectName, String studentName) {
+        int position = findSubject(subjectName);
+        if((position >= 0) && (subjectList.get(position).findStudentByName(studentName)>= 0))
             return true;
         return false;
     }
@@ -81,7 +81,7 @@ public class Subjects {
                for(int i=0;i<subjectList.size();i++) {
                    s += "\n\t\tSubject: " + subjectList.get(i).getSubjectName();
                    s += "\n\t\tTeacher: " + subjectList.get(i).getTeacher().getTeacherName();
-                   s += "\n\t\tAlunos: [";
+                   s += "\n\t\tStudents: [";
                    for(Student st : subjectList.get(i).getAllStudentsFromSubject()){
                        s += "\n\t\t\t" + st.getStudentCode() + " -> " + st.getStudentName();
                    }
