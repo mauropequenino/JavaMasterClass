@@ -1,6 +1,6 @@
 package poo.composition.compra_venda;
 
-public class SellItem {
+public class  SellItem {
     private int quantity;
     private double unitPrice;
     private Product product;

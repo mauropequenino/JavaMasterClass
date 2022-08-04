@@ -61,7 +61,7 @@ public class Album {
     /*
      * Adicionar uma musica a playlist via o nome da faixa
      * @param String title = nome da faixa
-     * @param ArrayList<Song> = objecto da musica
+     * @param ArrayList<Song> = objecto d  a musica
      * */
     public boolean addToPlaylist(String title, List<Song> playlist) {
         Song checkedSong = findSong(title);
