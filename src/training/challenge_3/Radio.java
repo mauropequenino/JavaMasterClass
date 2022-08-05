@@ -48,7 +48,7 @@ public class Radio {
 
     private Station findStation(String code){
         for(Station s : stations) {
-            if(s.getCode().equals(code)) {
+            if(s.getCode().equalsIgnoreCase(code)) {
                 return s;
             }
         }
