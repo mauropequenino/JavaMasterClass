@@ -4,7 +4,12 @@ import java.util.Arrays;
 
 
 /*
-* Tem complexidade de tempo de n2, o que significa que a medida que o numero de elementos que se deseja
+* A classificação por inserção é um algoritmo de classificação simples que funciona de maneira semelhante
+* à maneira como você classifica as cartas de baralho em suas mãos. A matriz é virtualmente dividida em uma
+* parte classificada e uma parte não classificada. Os valores da peça não classificada são selecionados e
+* colocados na posição correta na peça classificada.
+*
+* Tem complexidade de tempo de O(n2), o que significa que a medida que o numero de elementos que se deseja
 * ordenar, a qunantidade do tempo que leva a ordenar aumentar exponencialmente
 * */
 public class InsertionSort {

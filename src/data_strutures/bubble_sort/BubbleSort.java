@@ -1,6 +1,11 @@
 package data_strutures.bubble_sort;
 
 import java.util.Arrays;
+/*
+* Algoritmo: Percorre várias vezes o vetor de maneira sequencial (passos). Em cada passo, compara cada elemento
+* no vetor com o seu sucessor (p[i] com p[i+1]) e troca o conteúdo das posições em análise, caso não estejam
+* na ordem desejada.
+ */
 
 public class BubbleSort {
 
