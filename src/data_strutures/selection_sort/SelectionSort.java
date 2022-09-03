@@ -23,11 +23,11 @@ public class SelectionSort {
                     smallestNumber = j;
                 }
             }
-            replace(arr, i, smallestNumber);
+            swap(arr, i, smallestNumber);
         }
     }
 
-    public static void replace(int[] arr, int i, int smallestNumber) {
+    public static void swap(int[] arr, int i, int smallestNumber) {
         int aux = arr[i];
         arr[i] = arr[smallestNumber];
         arr[smallestNumber] = aux;
