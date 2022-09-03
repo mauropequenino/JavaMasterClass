@@ -8,7 +8,12 @@ public class Main{
         if (theatre.reserveSeat("D08")) {
             System.out.println("Reserved, please pay");
         } else {
-            System.out.println("Seat is taken");
+            System.out.println("Sorry, seat is taken ");
+        }
+        if (theatre.reserveSeat("D08")) {
+            System.out.println("Reserved, please pay");
+        } else {
+            System.out.println("Sorry, seat is taken ");
         }
     }
 }

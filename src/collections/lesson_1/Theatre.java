@@ -1,6 +1,7 @@
 package collections.lesson_1;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Theatre {
@@ -24,20 +25,27 @@ public class Theatre {
     }
 
     public boolean reserveSeat(String seatNumber) {
-        Seat requestSeat = null;
-        for(Seat seat: seats) {
-            if(seat.getSeatNumber().equals(seatNumber)){
-                requestSeat = seat;
-                break;
-            }
-        }
-
-        if(requestSeat == null) {
-            System.out.println("There is no seat " + seatNumber);
+        Seat requestedSeat = new Seat(seatNumber);
+        int foundSeat = Collections.binarySearch(seats, requestedSeat, null);
+        if(foundSeat >=0) {
+            return seats.get(foundSeat).reserved();
+        } else  {
             return false;
         }
-
-        return requestSeat.reserve();
+//        for(Seat seat: seats) {
+//            System.out.println(".");
+//            if(seat.getSeatNumber().equals(seatNumber)){
+//                requestSeat = seat;
+//                break;
+//            }
+//        }
+//
+//        if(requestSeat == null) {
+//            System.out.println("There is no seat " + seatNumber);
+//            return false;
+//        }
+//
+//        return requestSeat.reserve();
     }
 
     public void getSeats() {
@@ -46,7 +54,7 @@ public class Theatre {
         }
     }
 
-    public class Seat {
+    public class Seat implements Comparable<Seat>{
         private final String seatNumber;
         private boolean reserved = false;
 
@@ -54,7 +62,13 @@ public class Theatre {
             this.seatNumber = seatNumber;
         }
 
-        public boolean reserve() {
+
+        @Override
+        public int compareTo(Seat seat) {
+            return this.seatNumber.compareToIgnoreCase(seat.getSeatNumber());
+        }
+
+        public boolean reserved() {
             if(!this.reserved) {
                 this.reserved = true;
                 System.out.println("Seat " + seatNumber + reserved);
